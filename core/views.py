@@ -4,8 +4,8 @@ from django.shortcuts import render
 from rest_framework.generics import ListAPIView
 from rest_framework.viewsets import ModelViewSet
 
-from core.models import Currency, Category
-from core.serializers import CurrencySerializer, CategorySerializer
+from core.models import Currency, Category, Transaction
+from core.serializers import CurrencySerializer, CategorySerializer, TransactionSerializer
 
 
 class CurrencyListAPIView(ListAPIView):
@@ -16,3 +16,8 @@ class CurrencyListAPIView(ListAPIView):
 class CategoryModelViewSet(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+
+class TransactionModelViewSet(ModelViewSet):
+    queryset = Transaction.objects.all()
+    serializer_class = TransactionSerializer

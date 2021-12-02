@@ -5,11 +5,12 @@ from core import views
 
 from rest_framework import routers
 
-from core.views import CategoryModelViewSet
+from core.views import CategoryModelViewSet, TransactionModelViewSet
 
 router = routers.SimpleRouter()
 router.register(r'categories', CategoryModelViewSet, basename="category")
+router.register(r'transactions', TransactionModelViewSet, basename="transaction")
 
 urlpatterns = [
-    path("currencies/", views.CurrencyListAPIView.as_view(), name="currencies"),
-] + router.urls
+                  path("currencies/", views.CurrencyListAPIView.as_view(), name="currencies"),
+              ] + router.urls
