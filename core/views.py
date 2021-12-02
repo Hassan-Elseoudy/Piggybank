@@ -12,6 +12,7 @@ from core.serializers import CurrencySerializer, CategorySerializer, WriteTransa
 class CurrencyListAPIView(ListAPIView):
     queryset = Currency.objects.all()
     serializer_class = CurrencySerializer
+    pagination_class = None  # We can set it here
 
 
 class CategoryModelViewSet(ModelViewSet):
