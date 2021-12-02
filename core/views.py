@@ -20,7 +20,7 @@ class CategoryModelViewSet(ModelViewSet):
 
 
 class TransactionModelViewSet(ModelViewSet):
-    queryset = Transaction.objects.all()
+    queryset = Transaction.objects.select_related("currency", "category")
 
     def get_serializer_class(self):
         if self.action in ("list", "retrieve"):
