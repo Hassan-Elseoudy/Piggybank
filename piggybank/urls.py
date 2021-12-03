@@ -1,5 +1,6 @@
+import debug_toolbar
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 
 from core import views
@@ -14,5 +15,8 @@ router.register(r'transactions', TransactionModelViewSet, basename="transaction"
 
 urlpatterns = [
                   path("currencies/", views.CurrencyListAPIView.as_view(), name="currencies"),
-                  path("login/", obtain_auth_token, name="token")
+                  path("login/", obtain_auth_token, name="token"),
+                  path("report/", views.TransactionReportAPIView.as_view(), name="report"),
+                  path('api-auth/', include('rest_framework.urls')),
+                  path('__debug__/', include(debug_toolbar.urls)),
               ] + router.urls
